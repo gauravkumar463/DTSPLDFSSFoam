@@ -1,0 +1,13 @@
+Making dependency list for source file LDFSSFlux.C
+g++ -std=c++11 -m64 -Dlinux64 -DWM_ARCH_OPTION=64 -DWM_DP -DWM_LABEL_SIZE=32 -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-attributes -O3  -DNoRepository -ftemplate-depth-100 -I/home1/OpenFOAM/OpenFOAM-dev/src/meshTools/lnInclude -I/home1/OpenFOAM/OpenFOAM-dev/src/finiteVolume/lnInclude -IlnInclude -I. -I/home1/OpenFOAM/OpenFOAM-dev/src/OpenFOAM/lnInclude -I/home1/OpenFOAM/OpenFOAM-dev/src/OSspecific/POSIX/lnInclude   -fPIC -c LDFSSFlux.C -o Make/linux64Gcc71DPInt32Opt/LDFSSFlux.o
+LDFSSFlux.C: In member function ‘void Foam::LDFSSFlux::evaluateFlux(Foam::scalar&, Foam::vector&, Foam::scalar&, Foam::scalar, Foam::scalar, Foam::vector, Foam::vector, Foam::scalar, Foam::scalar, Foam::scalar, Foam::scalar, Foam::scalar, Foam::scalar, Foam::scalar, Foam::scalar, Foam::scalar, Foam::vector) const’:
+LDFSSFlux.C:98:48: warning: use of old-style cast [-Wold-style-cast]
+     scalar betaLeft = -max(0.0,1-(int)mag(MLeft));
+                                                ^
+LDFSSFlux.C:99:50: warning: use of old-style cast [-Wold-style-cast]
+     scalar betaRight = -max(0.0,1-(int)mag(MRight));
+                                                  ^
+LDFSSFlux.C:121:63: error: expected ‘)’ before ‘TRight’
+     rhoEFlux = rhoLeft*((Cp-R)*TLeft)*UPlus + rhoRight*((Cp-R)TRight)*Uminus;
+                                                               ^~~~~~
+make: *** [/home1/OpenFOAM/OpenFOAM-dev/wmake/rules/General/transform:26: Make/linux64Gcc71DPInt32Opt/LDFSSFlux.o] Error 1
