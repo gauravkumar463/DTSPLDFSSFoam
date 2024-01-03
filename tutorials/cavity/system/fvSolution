@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "(p|U|e)"
+    {
+        solver          diagonal;
+    }
+
+"(cellDisplacement)"
+{
+    solver		GAMG;
+    smoother		symGaussSeidel;
+    tolerance		1e-10;
+    relTol		0;
+}
+
+}
+Convergence
+{
+    maxItr	2;
+    CoNum	1;
+    Uinf	1e-6;
+    Pinf	101325;
+    Tinf	353;
+    rhoTolerance   	1e1;
+    rhoUTolerance  	1e-2;
+    rhoETolerance	1e1;
+    DontCheckUz		true;
+    checkAverageResiduals yes;
+}
+multiStage
+{
+    numberRungeKuttaStages 4;
+    RKCoeff 0.11 0.2766 0.5 1.0;
+}
+
+cellDisplacementControl
+{
+	nCorrectors 3;
+	tolerance   1e-6;
+}
+// ************************************************************************* //
